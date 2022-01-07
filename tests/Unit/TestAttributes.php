@@ -9,7 +9,7 @@ use Quillstack\ServerRequest\Tests\Mocks\ServerRequest\MockProtocolVersion;
 use Quillstack\UnitTests\AssertEqual;
 use Quillstack\UnitTests\Types\AssertNull;
 
-final class TestAttributes
+class TestAttributes
 {
     private ServerRequest $request;
 

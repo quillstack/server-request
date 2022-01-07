@@ -10,4 +10,6 @@ return [
     \Quillstack\ServerRequest\Tests\Unit\ServerRequest\TestHeaderBag::class,
     \Quillstack\ServerRequest\Tests\Unit\ServerRequest\TestMethod::class,
     \Quillstack\ServerRequest\Tests\Unit\ServerRequest\TestUploadedFiles::class,
+    \Quillstack\ServerRequest\Tests\Unit\ServerRequest\TestUri::class,
+    \Quillstack\ServerRequest\Tests\Unit\ServerRequest\TestParsedBodyParams::class,
 ];

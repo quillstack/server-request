@@ -4,39 +4,38 @@ declare(strict_types=1);
 
 namespace Quillstack\ServerRequest\Tests\Unit\ServerRequest;
 
-use PHPUnit\Framework\TestCase;
-use Quillstack\ServerRequest\Tests\Unit\ServerRequest;
-use QuillStack\Http\Stream\InputStream;
+use Quillstack\ServerRequest\ServerRequest;
 use Quillstack\ServerRequest\Tests\Mocks\ServerRequest\MockProtocolVersion;
 use Quillstack\ServerRequest\Tests\Mocks\ServerRequest\MockUri;
+use Quillstack\UnitTests\AssertEqual;
 
-final class UriTest extends TestCase
+class TestUri
 {
     private ServerRequest $request;
 
-    protected function setUp(): void
+    public function __construct(private AssertEqual $assertEqual)
     {
         $this->request = (new MockUri())->get();
     }
 
-    public function testGetEmptyBody()
+    public function getEmptyBody()
     {
         $request = (new MockProtocolVersion())->get();
 
-        $this->assertEquals('http://localhost:8000/', (string) $request->getUri());
+        $this->assertEqual->equal('http://localhost:8000/', (string) $request->getUri());
     }
 
-    public function testGetNotEmptyBody()
+    public function getNotEmptyBody()
     {
-        $this->assertEquals('http://127.0.0.1/path', (string) $this->request->getUri());
+        $this->assertEqual->equal('http://127.0.0.1/path', (string) $this->request->getUri());
     }
 
-    public function testWithBody()
+    public function withBody()
     {
         $request = (new MockProtocolVersion())->get();
         $request = $this->request->withUri($request->getUri());
 
-        $this->assertEquals('http://127.0.0.1/path', (string) $this->request->getUri());
-        $this->assertEquals('http://localhost:8000/', (string) $request->getUri());
+        $this->assertEqual->equal('http://127.0.0.1/path', (string) $this->request->getUri());
+        $this->assertEqual->equal('http://localhost:8000/', (string) $request->getUri());
     }
 }
