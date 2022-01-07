@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Quillstack\Request\Tests\Mocks;
+namespace Quillstack\ServerRequest\Tests\Mocks;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use QuillStack\DI\Container;
-use Quillstack\Request\Factory\ServerRequest\RequestFromGlobalsFactory;
+use Quillstack\ServerRequest\Factory\ServerRequest\RequestFromGlobalsFactory;
 use QuillStack\Stream\InputStream;
 use Quillstack\Uri\Factory\UriFactory;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Quillstack\Request\Factory\Exceptions;
+namespace Quillstack\ServerRequest\Factory\Exceptions;
 
 use RuntimeException;
 

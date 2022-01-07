@@ -1,5 +1,5 @@
 {
-    "name": "quillstack/request",
+    "name": "quillstack/server-request",
     "description": "The request object based on PSR-7: HTTP messages, and with the main goal: to be simple and fast.",
     "type": "library",
     "license": "MIT",
@@ -23,8 +23,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Quillstack\\Request\\": "src/",
-            "Quillstack\\Request\\Tests\\": "tests/"
+            "Quillstack\\ServerRequest\\": "src/",
+            "Quillstack\\ServerRequest\\Tests\\": "tests/"
         }
     },
     "extra": {

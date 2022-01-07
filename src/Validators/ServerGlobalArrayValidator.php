@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Quillstack\Request\Validators;
+namespace Quillstack\ServerRequest\Validators;
 
-use Quillstack\Request\Factory\Exceptions\RequiredParamFromGlobalsNotFoundException;
-use Quillstack\Request\Factory\ServerRequest\RequestFromGlobalsFactory;
+use Quillstack\ServerRequest\Factory\Exceptions\RequiredParamFromGlobalsNotFoundException;
+use Quillstack\ServerRequest\Factory\ServerRequest\RequestFromGlobalsFactory;
 use Quillstack\ValidatorInterface\ValidatorInterface;
 
 final class ServerGlobalArrayValidator implements ValidatorInterface

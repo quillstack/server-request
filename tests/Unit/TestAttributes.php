@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Quillstack\Request\Tests\Unit;
+namespace Quillstack\ServerRequest\Tests\Unit;
 
-use Quillstack\Request\ServerRequest;
-use Quillstack\Request\Tests\Mocks\ServerRequest\MockProtocolVersion;
+use Quillstack\ServerRequest\ServerRequest;
+use Quillstack\ServerRequest\Tests\Mocks\ServerRequest\MockProtocolVersion;
 use Quillstack\UnitTests\AssertEqual;
 use Quillstack\UnitTests\Types\AssertNull;
 

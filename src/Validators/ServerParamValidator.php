@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Quillstack\Request\Validators;
+namespace Quillstack\ServerRequest\Validators;
 
-use Quillstack\Request\Factory\Exceptions\ServerParamNotSetException;
+use Quillstack\ServerRequest\Factory\Exceptions\ServerParamNotSetException;
 use Quillstack\ValidatorInterface\ValidatorInterface;
 
 final class ServerParamValidator implements ValidatorInterface

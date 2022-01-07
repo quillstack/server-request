@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Quillstack\Request\Tests\Mocks\ServerRequest;
+namespace Quillstack\ServerRequest\Tests\Mocks\ServerRequest;
 
-use Quillstack\Request\Tests\Mocks\AbstractMock;
+use Quillstack\ServerRequest\Tests\Mocks\AbstractMock;
 
 class MockUri extends AbstractMock
 {

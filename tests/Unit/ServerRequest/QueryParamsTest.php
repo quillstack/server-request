@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Quillstack\Request\ServerRequest;
+namespace Quillstack\ServerRequest\ServerRequest;
 
 use PHPUnit\Framework\TestCase;
-use Quillstack\Request\Tests\Unit\ServerRequest;
-use Quillstack\Request\Tests\Mocks\ServerRequest\MockQuery;
+use Quillstack\ServerRequest\Tests\Unit\ServerRequest;
+use Quillstack\ServerRequest\Tests\Mocks\ServerRequest\MockQuery;
 
 final class QueryParamsTest extends TestCase
 {

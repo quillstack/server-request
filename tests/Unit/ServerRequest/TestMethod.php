@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Quillstack\Request\Tests\Unit\ServerRequest;
+namespace Quillstack\ServerRequest\Tests\Unit\ServerRequest;
 
-use Quillstack\Request\Factory\Exceptions\RequestMethodNotKnownException;
-use Quillstack\Request\ServerRequest;
-use Quillstack\Request\Tests\Mocks\ServerRequest\MockProtocolVersion;
+use Quillstack\ServerRequest\Factory\Exceptions\RequestMethodNotKnownException;
+use Quillstack\ServerRequest\ServerRequest;
+use Quillstack\ServerRequest\Tests\Mocks\ServerRequest\MockProtocolVersion;
 use Quillstack\UnitTests\AssertEqual;
 use Quillstack\UnitTests\AssertExceptions;
 

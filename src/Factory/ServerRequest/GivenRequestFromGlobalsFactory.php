@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Quillstack\Request\Factory\ServerRequest;
+namespace Quillstack\ServerRequest\Factory\ServerRequest;
 
 use Psr\Http\Message\ServerRequestInterface;
 

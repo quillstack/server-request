@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Quillstack\Request\Factory\ServerRequest;
+namespace Quillstack\ServerRequest\Factory\ServerRequest;
 
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
-use Quillstack\Request\Factory\Exceptions\UnknownServerRequestClassException;
-use Quillstack\Request\ServerRequest;
-use Quillstack\Request\Validators\ServerParamValidator;
+use Quillstack\ServerRequest\Factory\Exceptions\UnknownServerRequestClassException;
+use Quillstack\ServerRequest\ServerRequest;
+use Quillstack\ServerRequest\Validators\ServerParamValidator;
 
 class ServerRequestFactory implements ServerRequestFactoryInterface
 {

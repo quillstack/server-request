@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Quillstack\Request;
+namespace Quillstack\ServerRequest;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 use Quillstack\HeaderBag\HeaderBag;
-use Quillstack\Request\Factory\Exceptions\RequestMethodNotKnownException;
+use Quillstack\ServerRequest\Factory\Exceptions\RequestMethodNotKnownException;
 use QuillStack\ParameterBag\ParameterBag;
 
 class ServerRequest implements ServerRequestInterface

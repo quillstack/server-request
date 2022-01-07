@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Quillstack\Request\ServerRequest;
+namespace Quillstack\ServerRequest\Tests\Unit\ServerRequest;
 
 use PHPUnit\Framework\TestCase;
-use Quillstack\Request\Tests\Unit\ServerRequest;
+use Quillstack\ServerRequest\Tests\Unit\ServerRequest;
 use QuillStack\Http\Stream\InputStream;
-use Quillstack\Request\Tests\Mocks\ServerRequest\MockProtocolVersion;
-use Quillstack\Request\Tests\Mocks\ServerRequest\MockUri;
+use Quillstack\ServerRequest\Tests\Mocks\ServerRequest\MockProtocolVersion;
+use Quillstack\ServerRequest\Tests\Mocks\ServerRequest\MockUri;
 
 final class UriTest extends TestCase
 {
