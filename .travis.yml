@@ -9,7 +9,7 @@ addons:
     sonarcloud:
         organization: "quillstack"
         token:
-            secure: "qDccXAzF8ecpqKnfKpwzP94VNuDXhRSzx1zSnVvANBCZtLtstRv0YQtNoZV8H9HoPDZ+SAVvBRetLlDPhVx+egTsnbcKIXBdAQmyMsb0GeXhvNCdLUY7zk/YpFImBCmhtvspPwFb0+/BDXjL64vyiPKDDCPXdRkH2MbYPHBd8JVuj0X/69aRnZkpVmelDbSAbmV+JMygzwdF4YRes4YkF7ZBgdKOIH8kUS1S7l+lyFZCtW7BdQQJDbSIHkpBTgG9PwWk22agFjvbx2uYwwL7dbzWYx1YB3+vyK6qPtuZO1Q6Fto+69aL7vLSzUMSg/uhkU7L7uJ23Y3nr+Q3PTHPTPPRBKseoavkR4l7udg1/4pAIa9FKssuZUtvWEfX/7b2dr5nj14QblHGvj1HvJLhwW4JOHg5C1fyHMbmpa89sh+ZiDV6WJLPxtR7ZSPsN9FpRhUb9XanfhPHBA0DOf4NKR7OWbPEUxNcKj/ecweUraBB4bucsc1GfEw58ZBbWp1Tj5dcCskdA/LzPXzvH4obgS3Db/bdVqmKWHb8szzuy7G/+E6E5ieyoWBlrQQGG1X2oyhpCtFOzBdtzHRrAJcJP53x99qXHeheDqgMZLJuWcADwkN5wdhBvyP9Vy+EBlHtNYiLX2CcudGxaSl0FO8zv/t9S4OGSsoM4E4VkGBd7+E="
+            secure: "J3lL5HUf6wlx2THFmUXDYL8s4QsJgw/P7DD1RFbVT4CkkIugGRkD+2eVM+Ss9rzpfQq0llZi2K6B8+zk4ySXEBn5/X4PLTpYda+oiNP4uKTcBNcD9n6IjeKenExI2i2LEURJ1r52YIpPoB/iSLsxJ059DFSc0RzHse7yoLI9vx/O05r4caVUsnPUsHaBY9/GDWiPe7cuLD2le8y+0gPqc0KXKxogxBGYrhXc1XdQXTg90/nbjdNf8d+acx1v7QXJrTeC/lY6T5Tskn+TAZknJKCp36DulFS6yl7NXMsz0GWj5J4PyNfTKOlosfRgzjoa2hh/99HL8IXG5uUsKYEKE37oICOgwYe27e+VsrxXTDCseSXhYUF1ngF6BWw9fM8u12SqujaV5ScA6Cu0oZzmCq4tmqM0B3iZ+sy852+q1ePzRd9os9FADLjNMYKQbJ+OCeOV+4xZcGrHdspqwJ/cXan8gtOmWXM94WkRv+4SuQ8qT9VXhv8TUfBCax7A8QQgQPx6k9Z8OhynBPa1DHLalMOS51BwzO2tnqRQoUO5pWWARHeK9V7nut7O7kTZzaSj1+gb2dFRydjencgcXfG/A5eI7Rnc6S92v7fU5o2bPyO42Ym76bx5eZb/WSCLrfVjwBqVxwIZcm1ngn/3TTdlg1cX22sdU40u37LP8XFQAeg="
 git:
     depth: false
 install: composer update --no-interaction --no-suggest --no-progress
