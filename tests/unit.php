@@ -10,6 +10,8 @@ return [
     \Quillstack\ServerRequest\Tests\Unit\ServerRequest\TestHeaderBag::class,
     \Quillstack\ServerRequest\Tests\Unit\ServerRequest\TestMethod::class,
     \Quillstack\ServerRequest\Tests\Unit\ServerRequest\TestParsedBodyParams::class,
+    \Quillstack\ServerRequest\Tests\Unit\ServerRequest\TestProtocolVersion::class,
+    \Quillstack\ServerRequest\Tests\Unit\ServerRequest\TestQueryParams::class,
     \Quillstack\ServerRequest\Tests\Unit\ServerRequest\TestRequestTarget::class,
     \Quillstack\ServerRequest\Tests\Unit\ServerRequest\TestRootRequestTarget::class,
     \Quillstack\ServerRequest\Tests\Unit\ServerRequest\TestServerParams::class,
