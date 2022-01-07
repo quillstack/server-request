@@ -14,4 +14,5 @@ git:
     depth: false
 install: composer update --no-interaction --no-suggest --no-progress
 script:
+    - phpdbg -qrr ./vendor/bin/unit-tests
     - sonar-scanner
