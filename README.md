@@ -10,9 +10,8 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=quillstack_request&metric=coverage)](https://sonarcloud.io/dashboard?id=quillstack_request)
 ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/quillstack/request)
 ![Packagist License](https://img.shields.io/packagist/l/quillstack/request)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/quillstack/request/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/quillstack/request/?branch=master)
 
-QuillStack Request is the request library which implements
+Quillstack Request is the request library which implements
 _PSR-7: HTTP message interfaces_ and is based on
 _PSR-17: HTTP Factories_.
 You can find the full documentation on the website: \
@@ -23,18 +22,12 @@ https://quillstack.com/request
 Run tests using a command:
 
 ```
-phpdbg -qrr vendor/bin/phpunit
+phpdbg -qrr ./vendor/bin/unit-tests
 ```
 
-Check the tests coverage:
+## Docker
 
+```shell
+$ docker-compose up -d
+$ docker exec -w /var/www/html -it quillstack_request sh
 ```
-phpdbg -qrr vendor/bin/phpunit --coverage-html coverage tests
-```
-
-## Quill Stack
-
-If you want to know more about other solutions, visit the website: \
-https://quillstack.com/ 
-
-[![The Quill Stack](http://quillstack.com/quillstack.png)](https://quillstack.com/)
