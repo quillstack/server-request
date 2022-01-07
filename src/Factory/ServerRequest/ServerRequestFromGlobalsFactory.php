@@ -13,7 +13,7 @@ use Quillstack\ServerRequest\ServerRequest;
 use Quillstack\ServerRequest\Validators\ServerGlobalArrayValidator;
 use Quillstack\Uri\Uri;
 
-class RequestFromGlobalsFactory
+class ServerRequestFromGlobalsFactory
 {
     /**
      * @var string

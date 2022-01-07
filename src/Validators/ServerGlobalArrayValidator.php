@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace Quillstack\ServerRequest\Validators;
 
 use Quillstack\ServerRequest\Factory\Exceptions\RequiredParamFromGlobalsNotFoundException;
-use Quillstack\ServerRequest\Factory\ServerRequest\RequestFromGlobalsFactory;
+use Quillstack\ServerRequest\Factory\ServerRequest\ServerRequestFromGlobalsFactory;
 use Quillstack\ValidatorInterface\ValidatorInterface;
 
-final class ServerGlobalArrayValidator implements ValidatorInterface
+class ServerGlobalArrayValidator implements ValidatorInterface
 {
     /**
      * @var array
      */
     private const REQUIRED_SERVER_PARAMS = [
-        RequestFromGlobalsFactory::SERVER_REQUEST_METHOD,
-        RequestFromGlobalsFactory::SERVER_HTTP_HOST,
-        RequestFromGlobalsFactory::SERVER_REQUEST_URI,
-        RequestFromGlobalsFactory::SERVER_SERVER_PROTOCOL,
+        ServerRequestFromGlobalsFactory::SERVER_REQUEST_METHOD,
+        ServerRequestFromGlobalsFactory::SERVER_HTTP_HOST,
+        ServerRequestFromGlobalsFactory::SERVER_REQUEST_URI,
+        ServerRequestFromGlobalsFactory::SERVER_SERVER_PROTOCOL,
     ];
 
     private array $server;

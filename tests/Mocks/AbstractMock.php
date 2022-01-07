@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use QuillStack\DI\Container;
-use Quillstack\ServerRequest\Factory\ServerRequest\RequestFromGlobalsFactory;
+use Quillstack\ServerRequest\Factory\ServerRequest\ServerRequestFromGlobalsFactory;
 use QuillStack\Stream\InputStream;
 use Quillstack\Uri\Factory\UriFactory;
 
@@ -33,7 +33,7 @@ abstract class AbstractMock
         $container = new Container([
             StreamInterface::class => InputStream::class,
             UriFactoryInterface::class => UriFactory::class,
-            RequestFromGlobalsFactory::class => [
+            ServerRequestFromGlobalsFactory::class => [
                 'server' => static::SERVER,
                 'cookie' => static::COOKIE,
                 'query' => static::QUERY,
@@ -41,7 +41,7 @@ abstract class AbstractMock
                 'post' => static::POST,
             ],
         ]);
-        $factory = $container->get(RequestFromGlobalsFactory::class);
+        $factory = $container->get(ServerRequestFromGlobalsFactory::class);
         $this->request = $factory->createServerRequest();
     }
 

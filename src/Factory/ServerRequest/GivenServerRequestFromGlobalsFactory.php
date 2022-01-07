@@ -6,9 +6,9 @@ namespace Quillstack\ServerRequest\Factory\ServerRequest;
 
 use Psr\Http\Message\ServerRequestInterface;
 
-class GivenRequestFromGlobalsFactory
+class GivenServerRequestFromGlobalsFactory
 {
-    public RequestFromGlobalsFactory $requestFromGlobalsFactory;
+    public ServerRequestFromGlobalsFactory $requestFromGlobalsFactory;
 
     public function createGivenServerRequest(string $requestClass): ServerRequestInterface
     {

@@ -7,7 +7,7 @@ namespace Quillstack\ServerRequest\Validators;
 use Quillstack\ServerRequest\Factory\Exceptions\ServerParamNotSetException;
 use Quillstack\ValidatorInterface\ValidatorInterface;
 
-final class ServerParamValidator implements ValidatorInterface
+class ServerParamValidator implements ValidatorInterface
 {
     /**
      * @var array
