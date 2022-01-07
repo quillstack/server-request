@@ -1,4 +1,4 @@
-# Quillstack Request
+# Quillstack Server Request
 
 [![Build Status](https://app.travis-ci.com/quillstack/server-request.svg?branch=main)](https://app.travis-ci.com/quillstack/server-request)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=quillstack_request&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=quillstack_request)
@@ -8,7 +8,7 @@
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=quillstack_request&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=quillstack_request)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=quillstack_request&metric=coverage)](https://sonarcloud.io/summary/new_code?id=quillstack_request)
 
-Quillstack Request is the request library which implements
+Quillstack Server Request is the server request library which implements
 _PSR-7: HTTP message interfaces_ and is based on
 _PSR-17: HTTP Factories_.
 You can find the full documentation on the website: \
