@@ -7,10 +7,10 @@ namespace Quillstack\Request\Factory\ServerRequest;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Quillstack\HeaderBag\HeaderBag;
+use Quillstack\ParameterBag\ParameterBag;
 use Quillstack\Request\Factory\Exceptions\RequestMethodNotKnownException;
 use Quillstack\Request\ServerRequest;
 use Quillstack\Request\Validators\ServerGlobalArrayValidator;
-use QuillStack\ParameterBag\ParameterBag;
 use Quillstack\Uri\Uri;
 
 class RequestFromGlobalsFactory

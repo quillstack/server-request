@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace QuillStack\Mocks\ServerRequest;
+namespace Quillstack\Request\Tests\Mocks\ServerRequest;
 
-use QuillStack\Mocks\AbstractMock;
+use Quillstack\Request\Tests\Mocks\AbstractMock;
 
-final class MockUri extends AbstractMock
+class MockUri extends AbstractMock
 {
     public const SERVER = [
         'REQUEST_METHOD' => 'POST',

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace QuillStack\Mocks\ServerRequest;
+namespace Quillstack\Request\Tests\Mocks\ServerRequest;
 
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use QuillStack\DI\Container;
 use Quillstack\Request\Factory\ServerRequest\RequestFromGlobalsFactory;
-use QuillStack\Http\Stream\InputStream;
-use QuillStack\Http\Uri\Factory\UriFactory;
-use QuillStack\Mocks\AbstractMock;
+use Quillstack\Request\Tests\Mocks\AbstractMock;
+use QuillStack\Stream\InputStream;
+use Quillstack\Uri\Factory\UriFactory;
 
-final class MockBody extends AbstractMock
+class MockBody extends AbstractMock
 {
     public function __construct()
     {
@@ -23,7 +23,7 @@ final class MockBody extends AbstractMock
             ],
             UriFactoryInterface::class => UriFactory::class,
             RequestFromGlobalsFactory::class => [
-                'server' => MockProtocolVersion::SERVER,
+                'server' => AbstractMock::SERVER,
             ],
         ]);
         $factory = $container->get(RequestFromGlobalsFactory::class);

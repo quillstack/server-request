@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Quillstack\Request\ServerRequest;
 
 use PHPUnit\Framework\TestCase;
-use Quillstack\Request\ServerRequest;
-use QuillStack\Mocks\ServerRequest\MockProtocolVersion;
+use Quillstack\Request\Tests\Unit\ServerRequest;
+use Quillstack\Request\Tests\Mocks\ServerRequest\MockProtocolVersion;
 
 final class ServerParamsTest extends TestCase
 {

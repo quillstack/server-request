@@ -31,5 +31,8 @@
         "branch-alias": {
             "dev-main": "1.0.x-dev"
         }
+    },
+    "require-dev": {
+        "quillstack/unit-tests": "^0.2.8"
     }
 }

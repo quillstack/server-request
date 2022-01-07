@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Quillstack\Request\ServerRequest;
 
 use PHPUnit\Framework\TestCase;
-use Quillstack\Request\ServerRequest;
+use Quillstack\Request\Tests\Unit\ServerRequest;
 use QuillStack\Http\Stream\InputStream;
-use QuillStack\Mocks\ServerRequest\MockProtocolVersion;
-use QuillStack\Mocks\ServerRequest\MockUri;
+use Quillstack\Request\Tests\Mocks\ServerRequest\MockProtocolVersion;
+use Quillstack\Request\Tests\Mocks\ServerRequest\MockUri;
 
 final class HeaderBagTest extends TestCase
 {

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace QuillStack\Mocks;
+namespace Quillstack\Request\Tests\Mocks;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use QuillStack\DI\Container;
 use Quillstack\Request\Factory\ServerRequest\RequestFromGlobalsFactory;
-use QuillStack\Http\Stream\InputStream;
-use QuillStack\Http\Uri\Factory\UriFactory;
+use QuillStack\Stream\InputStream;
+use Quillstack\Uri\Factory\UriFactory;
 
 abstract class AbstractMock
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace QuillStack\Mocks\ServerRequest;
+namespace Quillstack\Request\Tests\Mocks\ServerRequest;
 
-use QuillStack\Mocks\AbstractMock;
+use Quillstack\Request\Tests\Mocks\AbstractMock;
 
-final class MockCookie extends AbstractMock
+class MockCookie extends AbstractMock
 {
     public const COOKIE = [
         'cookie' => 'test',
