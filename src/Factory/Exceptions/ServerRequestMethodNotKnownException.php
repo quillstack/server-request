@@ -6,7 +6,7 @@ namespace Quillstack\ServerRequest\Factory\Exceptions;
 
 use RuntimeException;
 
-class RequestMethodNotKnownException extends RuntimeException
+class ServerRequestMethodNotKnownException extends RuntimeException
 {
     //
 }

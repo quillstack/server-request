@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Quillstack\ServerRequest\Tests\Unit\ServerRequest;
 
-use Quillstack\ServerRequest\Factory\Exceptions\RequestMethodNotKnownException;
+use Quillstack\ServerRequest\Factory\Exceptions\ServerRequestMethodNotKnownException;
 use Quillstack\ServerRequest\ServerRequest;
 use Quillstack\ServerRequest\Tests\Mocks\ServerRequest\MockProtocolVersion;
 use Quillstack\UnitTests\AssertEqual;
@@ -34,7 +34,7 @@ class TestMethod
 
     public function withNonExistingMethod()
     {
-        $this->assertExceptions->expect(RequestMethodNotKnownException::class);
+        $this->assertExceptions->expect(ServerRequestMethodNotKnownException::class);
 
         $this->request->withMethod('SMURFS');
     }

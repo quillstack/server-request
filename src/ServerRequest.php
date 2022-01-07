@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 use Quillstack\HeaderBag\HeaderBag;
-use Quillstack\ServerRequest\Factory\Exceptions\RequestMethodNotKnownException;
+use Quillstack\ServerRequest\Factory\Exceptions\ServerRequestMethodNotKnownException;
 use QuillStack\ParameterBag\ParameterBag;
 
 class ServerRequest implements ServerRequestInterface
@@ -270,7 +270,7 @@ class ServerRequest implements ServerRequestInterface
         $uppercaseMethod = strtoupper($method);
 
         if (!in_array($uppercaseMethod, self::AVAILABLE_METHODS, true)) {
-            throw new RequestMethodNotKnownException("Method not known: {$method}");
+            throw new ServerRequestMethodNotKnownException("Method not known: {$method}");
         }
 
         $new = clone $this;

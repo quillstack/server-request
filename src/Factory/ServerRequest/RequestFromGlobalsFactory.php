@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Quillstack\HeaderBag\HeaderBag;
 use Quillstack\ParameterBag\ParameterBag;
-use Quillstack\ServerRequest\Factory\Exceptions\RequestMethodNotKnownException;
+use Quillstack\ServerRequest\Factory\Exceptions\ServerRequestMethodNotKnownException;
 use Quillstack\ServerRequest\ServerRequest;
 use Quillstack\ServerRequest\Validators\ServerGlobalArrayValidator;
 use Quillstack\Uri\Uri;
@@ -88,7 +88,7 @@ class RequestFromGlobalsFactory
         $method = strtoupper($this->server[self::SERVER_REQUEST_METHOD]);
 
         if (!in_array($method, ServerRequest::AVAILABLE_METHODS, true)) {
-            throw new RequestMethodNotKnownException("Method not known: {$method}");
+            throw new ServerRequestMethodNotKnownException("Method not known: {$method}");
         }
 
         return $method;
