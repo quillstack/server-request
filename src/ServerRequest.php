@@ -226,21 +226,21 @@ class ServerRequest implements ServerRequestInterface
             return $this->requestTarget;
         }
 
-        $requestTarget = '';
+        $builtRequestTarget = '';
         $path = $this->uri->getPath();
 
         if ($path !== '/') {
-            $requestTarget = '/';
+            $builtRequestTarget = '/';
         }
 
-        $requestTarget .= $path;
+        $builtRequestTarget .= $path;
         $queryString = $this->uri->getQuery();
 
         if ($queryString) {
-            $requestTarget .= "?{$queryString}";
+            $builtRequestTarget .= "?{$queryString}";
         }
 
-        return $requestTarget;
+        return $builtRequestTarget;
     }
 
     /**
