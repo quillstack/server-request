@@ -8,59 +8,12 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 use Quillstack\HeaderBag\HeaderBag;
+use Quillstack\HttpRequest\HttpRequest;
 use Quillstack\ServerRequest\Factory\Exceptions\ServerRequestMethodNotKnownException;
 use QuillStack\ParameterBag\ParameterBag;
 
 class ServerRequest implements ServerRequestInterface
 {
-    /**
-     * @var string
-     */
-    public const METHOD_GET = 'GET';
-
-    /**
-     * @var string
-     */
-    public const METHOD_POST = 'POST';
-
-    /**
-     * @var string
-     */
-    public const METHOD_HEAD = 'HEAD';
-
-    /**
-     * @var string
-     */
-    public const METHOD_PUT = 'PUT';
-
-    /**
-     * @var string
-     */
-    public const METHOD_DELETE = 'DELETE';
-
-    /**
-     * @var string
-     */
-    public const METHOD_PATCH = 'PATCH';
-
-    /**
-     * @var string
-     */
-    public const METHOD_OPTIONS = 'OPTIONS';
-
-    /**
-     * @var array
-     */
-    public const AVAILABLE_METHODS = [
-        self::METHOD_GET,
-        self::METHOD_POST,
-        self::METHOD_HEAD,
-        self::METHOD_PUT,
-        self::METHOD_DELETE,
-        self::METHOD_PATCH,
-        self::METHOD_OPTIONS,
-    ];
-
     private string $method;
     private UriInterface $uri;
     private string $protocolVersion;
@@ -269,7 +222,7 @@ class ServerRequest implements ServerRequestInterface
     {
         $uppercaseMethod = strtoupper($method);
 
-        if (!in_array($uppercaseMethod, self::AVAILABLE_METHODS, true)) {
+        if (!in_array($uppercaseMethod, HttpRequest::AVAILABLE_METHODS, true)) {
             throw new ServerRequestMethodNotKnownException("Method not known: {$method}");
         }
 
