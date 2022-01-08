@@ -13,19 +13,8 @@ use Quillstack\ServerRequest\Validators\ServerParamValidator;
 
 class ServerRequestFactory implements ServerRequestFactoryInterface
 {
-    /**
-     * @var string
-     */
     private string $requestClass = ServerRequest::class;
-
-    /**
-     * @var StreamInterface
-     */
     public StreamInterface $stream;
-
-    /**
-     * @var ServerParamValidator
-     */
     public ServerParamValidator $validator;
 
     /**
