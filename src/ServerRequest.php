@@ -14,53 +14,22 @@ use QuillStack\ParameterBag\ParameterBag;
 
 class ServerRequest implements ServerRequestInterface
 {
-    private string $method;
-    private UriInterface $uri;
-    private string $protocolVersion;
-    private HeaderBag $headerBag;
-    private ?StreamInterface $body;
-    private ?ParameterBag $serverParams;
-    private ?ParameterBag $cookieParams;
-    private ?ParameterBag $queryParams;
-    private ?ParameterBag $uploadedFiles;
-    private ?ParameterBag $parsedBody;
     private array $attributes = [];
     public ?string $requestTarget = null;
 
-    /**
-     * @param string $method
-     * @param UriInterface $uri
-     * @param string $protocolVersion
-     * @param HeaderBag $headerBag
-     * @param StreamInterface|null $body
-     * @param ParameterBag|null $serverParams
-     * @param ParameterBag|null $cookieParams
-     * @param ParameterBag|null $queryParams
-     * @param ParameterBag|null $uploadedFiles
-     * @param ParameterBag|null $parsedBody
-     */
     public function __construct(
-        string $method,
-        UriInterface $uri,
-        string $protocolVersion,
-        HeaderBag $headerBag,
-        StreamInterface $body = null,
-        ParameterBag $serverParams = null,
-        ParameterBag $cookieParams = null,
-        ParameterBag $queryParams = null,
-        ParameterBag $uploadedFiles = null,
-        ParameterBag $parsedBody = null
+        private string $method,
+        private UriInterface $uri,
+        private string $protocolVersion,
+        private HeaderBag $headerBag,
+        private ?StreamInterface $body = null,
+        private ?ParameterBag $serverParams = null,
+        private ?ParameterBag $cookieParams = null,
+        private ?ParameterBag $queryParams = null,
+        private ?ParameterBag $uploadedFiles = null,
+        private ?ParameterBag $parsedBody = null
     ) {
-        $this->method = $method;
-        $this->uri = $uri;
-        $this->protocolVersion = $protocolVersion;
-        $this->headerBag = $headerBag;
-        $this->body = $body;
-        $this->serverParams = $serverParams;
-        $this->cookieParams = $cookieParams;
-        $this->queryParams = $queryParams;
-        $this->uploadedFiles = $uploadedFiles;
-        $this->parsedBody = $parsedBody;
+        //
     }
 
     /**
