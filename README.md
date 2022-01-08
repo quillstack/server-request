@@ -26,5 +26,5 @@ phpdbg -qrr ./vendor/bin/unit-tests
 
 ```shell
 $ docker-compose up -d
-$ docker exec -w /var/www/html -it quillstack_request sh
+$ docker exec -w /var/www/html -it quillstack_server-request sh
 ```
