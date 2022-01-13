@@ -14,7 +14,7 @@
         "php": "^8.0",
         "psr/http-message": "^1.0",
         "psr/http-factory": "^1.0",
-        "quillstack/di": "^0.0.7",
+        "quillstack/di": "^0.0.8",
         "quillstack/header-bag": "^0.0.3",
         "quillstack/parameter-bag": "^0.0.2",
         "quillstack/validator-interface": "^0.0.2",
@@ -34,6 +34,6 @@
         }
     },
     "require-dev": {
-        "quillstack/unit-tests": "^0.2.8"
+        "quillstack/unit-tests": "^0.2.14"
     }
 }
