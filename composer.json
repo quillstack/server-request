@@ -19,7 +19,7 @@
         "quillstack/parameter-bag": "^0.0.2",
         "quillstack/validator-interface": "^0.0.2",
         "quillstack/uri": "^0.0.3",
-        "quillstack/stream": "^0.0.1",
+        "quillstack/stream": "^0.0.2",
         "quillstack/http-request": "^0.0.1"
     },
     "autoload": {
@@ -34,6 +34,6 @@
         }
     },
     "require-dev": {
-        "quillstack/unit-tests": "^0.2.14"
+        "quillstack/unit-tests": "^0.2.15"
     }
 }
