@@ -45,9 +45,6 @@ class ServerRequestFromGlobalsFactory
      */
     private const HEADER_PREFIX = 'HTTP_';
 
-    public ServerRequestFactory $serverRequestFactory;
-    public UriFactoryInterface $uriFactory;
-    public ServerGlobalArrayValidator $validator;
     private array $server;
     private array $cookie;
     private array $query;
@@ -55,6 +52,9 @@ class ServerRequestFromGlobalsFactory
     private array $post;
 
     public function __construct(
+        private readonly ServerRequestFactory $serverRequestFactory,
+        private readonly UriFactoryInterface $uriFactory,
+        private readonly ServerGlobalArrayValidator $validator,
         array $server = [],
         array $cookie = [],
         array $query = [],

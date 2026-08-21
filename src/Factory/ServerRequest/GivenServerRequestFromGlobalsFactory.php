@@ -8,13 +8,20 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class GivenServerRequestFromGlobalsFactory
 {
-    public ServerRequestFromGlobalsFactory $requestFromGlobalsFactory;
+    public function __construct(
+        private readonly ServerRequestFromGlobalsFactory $requestFromGlobalsFactory,
+        private readonly ServerRequestFactory $serverRequestFactory
+    ) {
+        //
+    }
 
+    /**
+     * Builds the request from the globals as the given class, so a controller declaring a
+     * request of its own is handed that one.
+     */
     public function createGivenServerRequest(string $requestClass): ServerRequestInterface
     {
-        $this->requestFromGlobalsFactory
-            ->serverRequestFactory
-            ->setRequestClass($requestClass);
+        $this->serverRequestFactory->setRequestClass($requestClass);
 
         return $this->requestFromGlobalsFactory->createServerRequest();
     }

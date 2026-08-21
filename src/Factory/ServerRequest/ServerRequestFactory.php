@@ -14,13 +14,19 @@ use Quillstack\ServerRequest\Validators\ServerParamValidator;
 class ServerRequestFactory implements ServerRequestFactoryInterface
 {
     private string $requestClass = ServerRequest::class;
-    public StreamInterface $stream;
-    public ServerParamValidator $validator;
+
+    public function __construct(
+        private readonly StreamInterface $stream,
+        private readonly ServerParamValidator $validator
+    ) {
+        //
+    }
 
     /**
-     * @param string $requestClass
+     * The class the request is built as, which lets a controller be handed a request of
+     * its own type.
      */
-    public function setRequestClass(string $requestClass)
+    public function setRequestClass(string $requestClass): void
     {
         if (!class_exists($requestClass)) {
             throw new UnknownServerRequestClassException("Unknown class name: {$requestClass}");
