@@ -7,7 +7,7 @@ namespace Quillstack\ServerRequest\Tests\Unit\ServerRequest;
 use Quillstack\ServerRequest\ServerRequest;
 use Quillstack\ServerRequest\Tests\Mocks\ServerRequest\MockBody;
 use Quillstack\ServerRequest\Tests\Mocks\ServerRequest\MockProtocolVersion;
-use QuillStack\Stream\InputStream;
+use Quillstack\Stream\InputStream;
 use Quillstack\UnitTests\AssertEqual;
 
 class TestBody

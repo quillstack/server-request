@@ -10,7 +10,7 @@ use Psr\Http\Message\UriInterface;
 use Quillstack\HeaderBag\HeaderBag;
 use Quillstack\HttpRequest\HttpRequest;
 use Quillstack\ServerRequest\Factory\Exceptions\ServerRequestMethodNotKnownException;
-use QuillStack\ParameterBag\ParameterBag;
+use Quillstack\ParameterBag\ParameterBag;
 
 class ServerRequest implements ServerRequestInterface
 {
