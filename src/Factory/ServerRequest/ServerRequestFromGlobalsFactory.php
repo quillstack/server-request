@@ -45,12 +45,38 @@ class ServerRequestFromGlobalsFactory
      */
     private const HEADER_PREFIX = 'HTTP_';
 
+    /**
+     * @var array<string, mixed>
+     */
     private array $server;
+
+    /**
+     * @var array<string, mixed>
+     */
     private array $cookie;
+
+    /**
+     * @var array<string, mixed>
+     */
     private array $query;
+
+    /**
+     * @var array<string, mixed>
+     */
     private array $files;
+
+    /**
+     * @var array<string, mixed>
+     */
     private array $post;
 
+    /**
+     * @param array<string, mixed> $server
+     * @param array<string, mixed> $cookie
+     * @param array<string, mixed> $query
+     * @param array<string, mixed> $files
+     * @param array<string, mixed> $post
+     */
     public function __construct(
         private readonly ServerRequestFactory $serverRequestFactory,
         private readonly UriFactoryInterface $uriFactory,
@@ -85,7 +111,7 @@ class ServerRequestFromGlobalsFactory
 
     private function getMethod(): string
     {
-        $method = strtoupper($this->server[self::SERVER_REQUEST_METHOD]);
+        $method = strtoupper($this->fromServer(self::SERVER_REQUEST_METHOD));
 
         if (!in_array($method, HttpRequest::AVAILABLE_METHODS, true)) {
             throw new ServerRequestMethodNotKnownException("Method not known: {$method}");
@@ -100,12 +126,15 @@ class ServerRequestFromGlobalsFactory
             ? Uri::SCHEME_HTTPS
             : Uri::SCHEME_HTTP;
 
-        $host = $this->server[self::SERVER_HTTP_HOST];
-        $requestUri = $this->server[self::SERVER_REQUEST_URI];
+        $host = $this->fromServer(self::SERVER_HTTP_HOST);
+        $requestUri = $this->fromServer(self::SERVER_REQUEST_URI);
 
         return "{$scheme}://{$host}{$requestUri}";
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private function getServerParams(): array
     {
         return [
@@ -124,14 +153,14 @@ class ServerRequestFromGlobalsFactory
         $headers = [];
 
         foreach ($this->server as $key => $value) {
-            if (substr($key, 0, 5) !== self::HEADER_PREFIX) {
+            if (!str_starts_with((string) $key, self::HEADER_PREFIX)) {
                 continue;
             }
 
-            $name = str_replace(self::HEADER_PREFIX, '', $key);
+            $name = str_replace(self::HEADER_PREFIX, '', (string) $key);
             $name = str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', $name))));
 
-            $headers[$name] = $value;
+            $headers[$name] = is_string($value) ? $value : '';
         }
 
         return new HeaderBag($headers);
@@ -139,6 +168,17 @@ class ServerRequestFromGlobalsFactory
 
     private function getServerVersion(): string
     {
-        return str_replace('HTTP/', '', $this->server['SERVER_PROTOCOL']);
+        return str_replace('HTTP/', '', $this->fromServer('SERVER_PROTOCOL'));
+    }
+
+    /**
+     * A value out of the server array, read as the string it is meant to be. What PHP puts
+     * there is whatever the web server sent, so nothing about it is promised.
+     */
+    private function fromServer(string $key): string
+    {
+        $value = $this->server[$key] ?? '';
+
+        return is_scalar($value) ? (string) $value : '';
     }
 }

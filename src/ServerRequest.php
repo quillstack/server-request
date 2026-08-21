@@ -11,11 +11,22 @@ use Quillstack\HeaderBag\HeaderBag;
 use Quillstack\HttpRequest\HttpRequest;
 use Quillstack\ServerRequest\Factory\Exceptions\ServerRequestMethodNotKnownException;
 use Quillstack\ParameterBag\ParameterBag;
+use Quillstack\ServerRequest\Stream\EmptyStream;
 
 class ServerRequest implements ServerRequestInterface
 {
+    /**
+     * @var array<string, mixed>
+     */
     private array $attributes = [];
+
     public ?string $requestTarget = null;
+
+    private ParameterBag $serverParams;
+    private ParameterBag $cookieParams;
+    private ParameterBag $queryParams;
+    private ParameterBag $uploadedFiles;
+    private ParameterBag $parsedBody;
 
     public function __construct(
         private string $method,
@@ -23,13 +34,19 @@ class ServerRequest implements ServerRequestInterface
         private string $protocolVersion,
         private HeaderBag $headerBag,
         private ?StreamInterface $body = null,
-        private ?ParameterBag $serverParams = null,
-        private ?ParameterBag $cookieParams = null,
-        private ?ParameterBag $queryParams = null,
-        private ?ParameterBag $uploadedFiles = null,
-        private ?ParameterBag $parsedBody = null
+        ?ParameterBag $serverParams = null,
+        ?ParameterBag $cookieParams = null,
+        ?ParameterBag $queryParams = null,
+        ?ParameterBag $uploadedFiles = null,
+        ?ParameterBag $parsedBody = null
     ) {
-        //
+        // A request built without one of these was one method call away from a fatal error,
+        // and PSR-7 promises an array from every one of them.
+        $this->serverParams = $serverParams ?? new ParameterBag();
+        $this->cookieParams = $cookieParams ?? new ParameterBag();
+        $this->queryParams = $queryParams ?? new ParameterBag();
+        $this->uploadedFiles = $uploadedFiles ?? new ParameterBag();
+        $this->parsedBody = $parsedBody ?? new ParameterBag();
     }
 
     /**
@@ -125,7 +142,7 @@ class ServerRequest implements ServerRequestInterface
      */
     public function getBody()
     {
-        return $this->body;
+        return $this->body ?? new EmptyStream();
     }
 
     /**
@@ -222,7 +239,9 @@ class ServerRequest implements ServerRequestInterface
 
     /**
      * {@inheritDoc}
-     */
+      *
+     * @return array<string, mixed>
+    */
     public function getServerParams()
     {
         return $this->serverParams->all();
@@ -230,7 +249,9 @@ class ServerRequest implements ServerRequestInterface
 
     /**
      * {@inheritDoc}
-     */
+      *
+     * @return array<string, mixed>
+    */
     public function getCookieParams()
     {
         return $this->cookieParams->all();
@@ -238,7 +259,9 @@ class ServerRequest implements ServerRequestInterface
 
     /**
      * {@inheritDoc}
-     */
+      *
+     * @param array<string, mixed> $cookies
+    */
     public function withCookieParams(array $cookies)
     {
         $new = clone $this;
@@ -249,7 +272,9 @@ class ServerRequest implements ServerRequestInterface
 
     /**
      * {@inheritDoc}
-     */
+      *
+     * @return array<string, mixed>
+    */
     public function getQueryParams()
     {
         return $this->queryParams->all();
@@ -257,7 +282,9 @@ class ServerRequest implements ServerRequestInterface
 
     /**
      * {@inheritDoc}
-     */
+      *
+     * @param array<string, mixed> $query
+    */
     public function withQueryParams(array $query)
     {
         $new = clone $this;
@@ -268,7 +295,9 @@ class ServerRequest implements ServerRequestInterface
 
     /**
      * {@inheritDoc}
-     */
+      *
+     * @return array<string, mixed>
+    */
     public function getUploadedFiles()
     {
         return $this->uploadedFiles->all();
@@ -276,7 +305,9 @@ class ServerRequest implements ServerRequestInterface
 
     /**
      * {@inheritDoc}
-     */
+      *
+     * @param array<string, mixed> $uploadedFiles
+    */
     public function withUploadedFiles(array $uploadedFiles)
     {
         $new = clone $this;
@@ -287,7 +318,9 @@ class ServerRequest implements ServerRequestInterface
 
     /**
      * {@inheritDoc}
-     */
+      *
+     * @return array<string, mixed>
+    */
     public function getParsedBody()
     {
         return $this->parsedBody->all();
@@ -295,18 +328,22 @@ class ServerRequest implements ServerRequestInterface
 
     /**
      * {@inheritDoc}
+     *
+     * @param array<string, mixed>|object|null $data
      */
     public function withParsedBody($data)
     {
         $new = clone $this;
-        $new->parsedBody = new ParameterBag($data);
+        $new->parsedBody = new ParameterBag(is_array($data) ? $data : []);
 
         return $new;
     }
 
     /**
      * {@inheritDoc}
-     */
+      *
+     * @return array<string, mixed>
+    */
     public function getAttributes()
     {
         return $this->attributes;

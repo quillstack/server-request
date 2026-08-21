@@ -38,11 +38,17 @@ class ServerRequestFactory implements ServerRequestFactoryInterface
     /**
      * {@inheritDoc}
      */
+    /**
+     * {@inheritDoc}
+     *
+     * @param array<string, mixed> $serverParams
+     */
     public function createServerRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
     {
         $this->validator->setServerParams($serverParams)->validate();
 
-        return new $this->requestClass(
+        /** @var ServerRequestInterface $request */
+        $request = new $this->requestClass(
             $method,
             $uri,
             $serverParams['protocolVersion'],
@@ -54,5 +60,7 @@ class ServerRequestFactory implements ServerRequestFactoryInterface
             $serverParams['uploadedFiles'],
             $serverParams['parsedBody'],
         );
+
+        return $request;
     }
 }

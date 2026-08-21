@@ -11,7 +11,7 @@ use Quillstack\ValidatorInterface\ValidatorInterface;
 class ServerGlobalArrayValidator implements ValidatorInterface
 {
     /**
-     * @var array
+     * @var string[]
      */
     private const REQUIRED_SERVER_PARAMS = [
         ServerRequestFromGlobalsFactory::SERVER_REQUEST_METHOD,
@@ -20,8 +20,14 @@ class ServerGlobalArrayValidator implements ValidatorInterface
         ServerRequestFromGlobalsFactory::SERVER_SERVER_PROTOCOL,
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     private array $server;
 
+    /**
+     * @param array<string, mixed> $server
+     */
     public function setServer(array $server): self
     {
         $this->server = $server;

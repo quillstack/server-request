@@ -10,7 +10,7 @@ use Quillstack\ValidatorInterface\ValidatorInterface;
 class ServerParamValidator implements ValidatorInterface
 {
     /**
-     * @var array
+     * @var string[]
      */
     private const REQUIRED_SERVER_PARAMS = [
         'protocolVersion',
@@ -22,8 +22,14 @@ class ServerParamValidator implements ValidatorInterface
         'parsedBody',
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     private array $serverParams;
 
+    /**
+     * @param array<string, mixed> $serverParams
+     */
     public function setServerParams(array $serverParams): self
     {
         $this->serverParams = $serverParams;
