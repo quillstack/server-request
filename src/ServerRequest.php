@@ -11,7 +11,7 @@ use Quillstack\HeaderBag\HeaderBag;
 use Quillstack\HttpRequest\HttpRequest;
 use Quillstack\ServerRequest\Factory\Exceptions\ServerRequestMethodNotKnownException;
 use Quillstack\ParameterBag\ParameterBag;
-use Quillstack\ServerRequest\Stream\EmptyStream;
+use Quillstack\Stream\EmptyStream;
 
 class ServerRequest implements ServerRequestInterface
 {
@@ -70,7 +70,6 @@ class ServerRequest implements ServerRequestInterface
 
     /**
      * {@inheritDoc}
-     * @codeCoverageIgnore
      */
     public function getHeaders()
     {
@@ -79,7 +78,6 @@ class ServerRequest implements ServerRequestInterface
 
     /**
      * {@inheritDoc}
-     * @codeCoverageIgnore
      */
     public function hasHeader($name)
     {
@@ -88,7 +86,6 @@ class ServerRequest implements ServerRequestInterface
 
     /**
      * {@inheritDoc}
-     * @codeCoverageIgnore
      */
     public function getHeader($name)
     {
@@ -97,7 +94,6 @@ class ServerRequest implements ServerRequestInterface
 
     /**
      * {@inheritDoc}
-     * @codeCoverageIgnore
      */
     public function getHeaderLine($name)
     {
