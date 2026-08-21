@@ -10,6 +10,7 @@ use Quillstack\HeaderBag\HeaderBag;
 use Quillstack\HttpRequest\HttpRequest;
 use Quillstack\ParameterBag\ParameterBag;
 use Quillstack\ServerRequest\Factory\Exceptions\ServerRequestMethodNotKnownException;
+use Quillstack\ServerRequest\UploadedFiles\UploadedFileFactory;
 use Quillstack\ServerRequest\Validators\ServerGlobalArrayValidator;
 use Quillstack\Uri\Uri;
 
@@ -143,7 +144,9 @@ class ServerRequestFromGlobalsFactory
             'serverParams' => new ParameterBag($this->server),
             'cookieParams' => new ParameterBag($this->cookie),
             'queryParams' => new ParameterBag($this->query),
-            'uploadedFiles' => new ParameterBag($this->files),
+            'uploadedFiles' => new ParameterBag(
+                (new UploadedFileFactory())->createFromGlobals($this->files)
+            ),
             'parsedBody' => new ParameterBag($this->post),
         ];
     }
