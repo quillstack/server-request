@@ -1,6 +1,6 @@
 # Quillstack Server Request
 
-[![Build Status](https://app.travis-ci.com/quillstack/server-request.svg?branch=main)](https://app.travis-ci.com/quillstack/server-request)
+[![Tests](https://github.com/quillstack/server-request/actions/workflows/tests.yml/badge.svg)](https://github.com/quillstack/server-request/actions/workflows/tests.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=quillstack_request&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=quillstack_request)
 [![StyleCI](https://github.styleci.io/repos/291464420/shield?branch=main)](https://github.styleci.io/repos/291464420?branch=main)
 [![CodeFactor](https://www.codefactor.io/repository/github/quillstack/server-request/badge)](https://www.codefactor.io/repository/github/quillstack/server-request)
