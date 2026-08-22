@@ -9,8 +9,8 @@ use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 use Quillstack\HeaderBag\HeaderBag;
 use Quillstack\HttpRequest\HttpRequest;
-use Quillstack\ServerRequest\Factory\Exceptions\ServerRequestMethodNotKnownException;
 use Quillstack\ParameterBag\ParameterBag;
+use Quillstack\ServerRequest\Factory\Exceptions\ServerRequestMethodNotKnownException;
 use Quillstack\Stream\EmptyStream;
 
 class ServerRequest implements ServerRequestInterface
