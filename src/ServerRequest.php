@@ -161,14 +161,11 @@ class ServerRequest implements ServerRequestInterface
             return $this->requestTarget;
         }
 
-        $builtRequestTarget = '';
+        // The path is already an absolute one — a leading slash used to be added here to
+        // make up for a URI which gave it back without one, and adding it now would say
+        // `//test`, which names a host rather than a path.
         $path = $this->uri->getPath();
-
-        if ($path !== '/') {
-            $builtRequestTarget = '/';
-        }
-
-        $builtRequestTarget .= $path;
+        $builtRequestTarget = $path === '' ? '/' : $path;
         $queryString = $this->uri->getQuery();
 
         if ($queryString) {
