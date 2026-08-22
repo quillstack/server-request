@@ -18,7 +18,7 @@
         "quillstack/header-bag": "^0.6",
         "quillstack/parameter-bag": "^0.6",
         "quillstack/validator-interface": "^0.6",
-        "quillstack/uri": "^0.6",
+        "quillstack/uri": "^0.6.1",
         "quillstack/stream": "^0.6",
         "quillstack/http-request": "^0.6"
     },
