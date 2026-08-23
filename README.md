@@ -6,6 +6,11 @@
 [![PHP Version](https://img.shields.io/packagist/php-v/quillstack/server-request)](https://packagist.org/packages/quillstack/server-request)
 [![StyleCI](https://github.styleci.io/repos/291464420/shield?branch=main)](https://github.styleci.io/repos/291464420?branch=main)
 [![CodeFactor](https://www.codefactor.io/repository/github/quillstack/server-request/badge)](https://www.codefactor.io/repository/github/quillstack/server-request)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=quillstack_server-request&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=quillstack_server-request)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=quillstack_server-request&metric=coverage)](https://sonarcloud.io/summary/new_code?id=quillstack_server-request)
+[![Maintainability](https://sonarcloud.io/api/project_badges/measure?project=quillstack_server-request&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=quillstack_server-request)
+[![Reliability](https://sonarcloud.io/api/project_badges/measure?project=quillstack_server-request&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=quillstack_server-request)
+[![Security](https://sonarcloud.io/api/project_badges/measure?project=quillstack_server-request&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=quillstack_server-request)
 [![License](https://img.shields.io/packagist/l/quillstack/server-request)](https://github.com/quillstack/server-request/blob/main/LICENSE)
 
 Quillstack Server Request is the server request library which implements
