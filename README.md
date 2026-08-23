@@ -21,19 +21,51 @@ and the body — and answered for the way PSR-7 says it should be. Every part of
 [parameter bag](https://github.com/quillstack/parameter-bag), so reading something which was
 not sent is an answer rather than a notice.
 
-### Requirements
+## Why this exists
+
+A server request has two entirely different origins, and most implementations only take one
+seriously. There is the one a web server hands over — `$_SERVER`, `$_GET`, `$_FILES`, a body on
+`php://input` — and the one a test or a client makes up from a verb and an address. Building the
+first from globals is fiddly and easy to get subtly wrong; building the second should be one
+line.
+
+This does both: `ServerRequestFromGlobalsFactory` for what arrived, and a PSR-17
+`ServerRequestFactory` for everything else. **A controller can also declare its own request
+class** — `LoginRequest`, `CreateUserRequest` — and be handed that instead, which is where
+validation belongs and where a framework usually makes you go looking.
+
+## Requirements
 
 - PHP 8.1 or newer
 
-### Installation
+## Installation
 
 ```shell
 composer require quillstack/server-request
 ```
 
-### Usage
+## Usage
 
-#### Building one from what arrived
+### Building one from a method and an address
+
+```php
+use Quillstack\ServerRequest\Factory\ServerRequestFactory;
+
+$request = (new ServerRequestFactory())->createServerRequest('GET', 'https://api.example.org/users/42?page=2');
+```
+
+```php
+$request->getMethod();              // 'GET'
+$request->getRequestTarget();       // '/users/42?page=2'
+$request->getHeaderLine('Host');    // 'api.example.org'
+$request->getQueryParams();         // ['page' => '2']
+```
+
+It is PSR-17, so anything expecting `ServerRequestFactoryInterface` can be handed one, and it
+needs nothing to be built itself. The Host header is set from the address, with the port where
+that port is not the usual one for the scheme.
+
+### Building one from what arrived
 
 ```php
 $request = $factory->createServerRequest();
@@ -51,7 +83,7 @@ The query parameters come from `$_GET` rather than from the URI, which is what P
 and what everything else in PHP does — so a rewritten URL and the parameters PHP parsed cannot
 disagree.
 
-#### Attributes
+### Attributes
 
 What the router matched arrives here, and anything else a middleware wants to hand along:
 
@@ -65,7 +97,7 @@ $request->getAttribute('page', '1');      // '1' — nothing under that name
 Every change hands back a copy, so a middleware adding one does not change the request anybody
 else is holding.
 
-#### A request class of your own
+### A request class of your own
 
 A controller can be handed a request of its own type, so what an endpoint expects is a class
 rather than a convention:
@@ -76,7 +108,7 @@ $factory->setRequestClass(UserRequest::class);
 
 The class has to exist; `UnknownServerRequestClassException` says so when it does not.
 
-#### Uploaded files
+### Uploaded files
 
 ```php
 foreach ($request->getUploadedFiles() as $name => $file) {
@@ -93,7 +125,7 @@ A file can only be moved once — moving it again throws `UploadedFileAlreadyMov
 because the second call would otherwise fail in a way nobody expects. `getStream()` after a
 move throws for the same reason.
 
-### Technical documentation
+## Technical documentation
 
 | Class | What it is |
 | --- | --- |
@@ -117,7 +149,38 @@ move throws for the same reason.
 `getRequestTarget()` is the path and the query string, taken from the URI — the path is
 already an absolute one, so nothing is added to the front of it.
 
-### Unit tests
+## Benchmark
+
+Measured with [quillstack/benchmark](https://github.com/quillstack/benchmark) on one request
+built from a method and an address with a query string, a thousand times. All four produce the
+same method, target and Host header. Runs are interleaved, each figure is the median of five,
+and PHP is 8.5.7.
+
+| | Version |
+| --- | --- |
+| quillstack/server-request | v0.8.0 |
+| nyholm/psr7 | 1.8.2 |
+| laminas/laminas-diactoros | 3.8.0 |
+| guzzlehttp/psr7 | 2.13.0 |
+
+| | Per request | Relative |
+| --- | --- | --- |
+| nyholm/psr7 | 6.2 µs | 0.46× |
+| **quillstack/server-request** | **13.4 µs** | — |
+| laminas/laminas-diactoros | 14.4 µs | 1.07× |
+| guzzlehttp/psr7 | 15.0 µs | 1.12× |
+
+**`nyholm/psr7` builds one in less than half the time**, and it is worth saying plainly rather
+than burying: it is the leanest PSR-7 there is, and if constructing requests in a loop is what
+your application does, that is the one to use.
+
+Where this one spends the difference is on the parts that make it a *server* request rather than
+a message: server parameters, query parameters, cookies and uploaded files each arrive in a
+[parameter bag](https://github.com/quillstack/parameter-bag) rather than a bare array, and the
+URI goes through a [conformance-tested parser](https://github.com/quillstack/uri). At thirteen
+microseconds, a request that builds one of these spends thirteen microseconds on it.
+
+## Tests
 
 ```shell
 composer test
@@ -125,13 +188,16 @@ composer test:coverage
 composer stan
 ```
 
-### Docker
+## The rest of Quillstack
 
-```shell
-docker-compose up -d
-docker exec -w /var/www/html -it quillstack_server-request sh
-```
+This is one component of [Quillstack](https://github.com/quillstack), a PHP framework which is
+as simple to use as it is strict about what it does.
 
-### License
+- [quillstack/router](https://github.com/quillstack/router) — what matches one to a controller
+- [quillstack/uri](https://github.com/quillstack/uri) — what takes the address apart
+- [quillstack/parameter-bag](https://github.com/quillstack/parameter-bag) — what holds the parameters
+- [quillstack/response](https://github.com/quillstack/response) — what goes back
+
+## License
 
 MIT. See [LICENSE](LICENSE).
