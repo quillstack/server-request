@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Quillstack\ServerRequest;
 
+use Psr\Http\Message\MessageInterface;
+use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
@@ -52,7 +54,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function getProtocolVersion()
+    public function getProtocolVersion(): string
     {
         return $this->protocolVersion;
     }
@@ -60,7 +62,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function withProtocolVersion($version)
+    public function withProtocolVersion($version): MessageInterface
     {
         $new = clone $this;
         $new->protocolVersion = $version;
@@ -71,7 +73,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function getHeaders()
+    public function getHeaders(): array
     {
         return $this->headerBag->getHeaders();
     }
@@ -79,7 +81,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function hasHeader($name)
+    public function hasHeader($name): bool
     {
         return $this->headerBag->hasHeader($name);
     }
@@ -87,7 +89,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function getHeader($name)
+    public function getHeader($name): array
     {
         return $this->headerBag->getHeader($name);
     }
@@ -95,7 +97,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function getHeaderLine($name)
+    public function getHeaderLine($name): string
     {
         return $this->headerBag->getHeaderLine($name);
     }
@@ -103,7 +105,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function withHeader($name, $value)
+    public function withHeader($name, $value): MessageInterface
     {
         $new = clone $this;
         $new->headerBag = $this->headerBag->withHeader($name, $value);
@@ -114,7 +116,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function withAddedHeader($name, $value)
+    public function withAddedHeader($name, $value): MessageInterface
     {
         $new = clone $this;
         $new->headerBag = $this->headerBag->withAddedHeader($name, $value);
@@ -125,7 +127,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function withoutHeader($name)
+    public function withoutHeader($name): MessageInterface
     {
         $new = clone $this;
         $new->headerBag = $this->headerBag->withoutHeader($name);
@@ -136,7 +138,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function getBody()
+    public function getBody(): StreamInterface
     {
         return $this->body ?? new EmptyStream();
     }
@@ -144,7 +146,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function withBody(StreamInterface $body)
+    public function withBody(StreamInterface $body): MessageInterface
     {
         $new = clone $this;
         $new->body = $body;
@@ -155,7 +157,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function getRequestTarget()
+    public function getRequestTarget(): string
     {
         if ($this->requestTarget) {
             return $this->requestTarget;
@@ -178,7 +180,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function withRequestTarget($requestTarget)
+    public function withRequestTarget($requestTarget): RequestInterface
     {
         $new = clone $this;
         $new->requestTarget = $requestTarget;
@@ -189,7 +191,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function getMethod()
+    public function getMethod(): string
     {
         return $this->method;
     }
@@ -197,7 +199,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function withMethod($method)
+    public function withMethod($method): RequestInterface
     {
         $uppercaseMethod = strtoupper($method);
 
@@ -214,7 +216,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function getUri()
+    public function getUri(): UriInterface
     {
         return $this->uri;
     }
@@ -222,7 +224,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function withUri(UriInterface $uri, $preserveHost = false)
+    public function withUri(UriInterface $uri, $preserveHost = false): RequestInterface
     {
         $new = clone $this;
         $new->uri = $uri;
@@ -235,7 +237,7 @@ class ServerRequest implements ServerRequestInterface
       *
      * @return array<string, mixed>
     */
-    public function getServerParams()
+    public function getServerParams(): array
     {
         return $this->serverParams->all();
     }
@@ -245,7 +247,7 @@ class ServerRequest implements ServerRequestInterface
       *
      * @return array<string, mixed>
     */
-    public function getCookieParams()
+    public function getCookieParams(): array
     {
         return $this->cookieParams->all();
     }
@@ -255,7 +257,7 @@ class ServerRequest implements ServerRequestInterface
       *
      * @param array<string, mixed> $cookies
     */
-    public function withCookieParams(array $cookies)
+    public function withCookieParams(array $cookies): ServerRequestInterface
     {
         $new = clone $this;
         $new->cookieParams = new ParameterBag($cookies);
@@ -268,7 +270,7 @@ class ServerRequest implements ServerRequestInterface
       *
      * @return array<string, mixed>
     */
-    public function getQueryParams()
+    public function getQueryParams(): array
     {
         return $this->queryParams->all();
     }
@@ -278,7 +280,7 @@ class ServerRequest implements ServerRequestInterface
       *
      * @param array<string, mixed> $query
     */
-    public function withQueryParams(array $query)
+    public function withQueryParams(array $query): ServerRequestInterface
     {
         $new = clone $this;
         $new->queryParams = new ParameterBag($query);
@@ -291,7 +293,7 @@ class ServerRequest implements ServerRequestInterface
       *
      * @return array<string, mixed>
     */
-    public function getUploadedFiles()
+    public function getUploadedFiles(): array
     {
         return $this->uploadedFiles->all();
     }
@@ -301,7 +303,7 @@ class ServerRequest implements ServerRequestInterface
       *
      * @param array<string, mixed> $uploadedFiles
     */
-    public function withUploadedFiles(array $uploadedFiles)
+    public function withUploadedFiles(array $uploadedFiles): ServerRequestInterface
     {
         $new = clone $this;
         $new->uploadedFiles = new ParameterBag($uploadedFiles);
@@ -324,7 +326,7 @@ class ServerRequest implements ServerRequestInterface
      *
      * @param array<string, mixed>|object|null $data
      */
-    public function withParsedBody($data)
+    public function withParsedBody($data): ServerRequestInterface
     {
         $new = clone $this;
         $new->parsedBody = new ParameterBag(is_array($data) ? $data : []);
@@ -337,7 +339,7 @@ class ServerRequest implements ServerRequestInterface
       *
      * @return array<string, mixed>
     */
-    public function getAttributes()
+    public function getAttributes(): array
     {
         return $this->attributes;
     }
@@ -357,7 +359,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function withAttribute($name, $value)
+    public function withAttribute($name, $value): ServerRequestInterface
     {
         $new = clone $this;
         $new->attributes[$name] = $value;
@@ -368,7 +370,7 @@ class ServerRequest implements ServerRequestInterface
     /**
      * {@inheritDoc}
      */
-    public function withoutAttribute($name)
+    public function withoutAttribute($name): ServerRequestInterface
     {
         $new = clone $this;
 

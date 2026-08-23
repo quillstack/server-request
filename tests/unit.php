@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 return [
+    \Quillstack\ServerRequest\Tests\Unit\TestServerRequestFactory::class,
     \Quillstack\ServerRequest\Tests\Unit\TestAttributes::class,
     \Quillstack\ServerRequest\Tests\Unit\TestFactories::class,
     \Quillstack\ServerRequest\Tests\Unit\TestUploadedFiles::class,
