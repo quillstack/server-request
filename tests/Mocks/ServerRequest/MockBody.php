@@ -19,7 +19,7 @@ class MockBody extends AbstractMock
         $container = new Container([
             StreamInterface::class => InputStream::class,
             InputStream::class => [
-                'contest' => 'Body test.',
+                'content' => 'Body test.',
             ],
             UriFactoryInterface::class => UriFactory::class,
             ServerRequestFromGlobalsFactory::class => [
